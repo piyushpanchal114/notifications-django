@@ -3,6 +3,8 @@ from . import views
 
 
 urlpatterns = [
+    path("notifications/",
+         views.NotificationPreferenceRetrieveUpdateAPIView.as_view()),
     path("preferences/",
-         views.NotificationPreferenceRetrieveAPIView.as_view())
+         views.NotificationTypeRetrieveUpdateAPIView.as_view())
 ]
