@@ -7,7 +7,6 @@ from .serializers import (NotificationPreferenceSerializer,
 class NotificationPreferenceRetrieveUpdateAPIView(RetrieveUpdateAPIView):
     """View for updating Notification Preferences"""
     serializer_class = NotificationPreferenceSerializer
-    http_method_names = ["get", "put", "options"]
 
     def get_object(self):
         return NotificationPreference.objects.filter(
@@ -20,4 +19,4 @@ class NotificationTypeRetrieveUpdateAPIView(RetrieveUpdateAPIView):
 
     def get_object(self):
         return NotificationType.objects.filter(
-            preference__user=self.request.user).first()
+            user=self.request.user).first()

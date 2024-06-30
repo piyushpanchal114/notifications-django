@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 
 class NotificationPreference(models.Model):
     """Model for Notification Preference"""
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, related_name="noti_prefs")
     is_email = models.BooleanField(default=True)
     is_mobile = models.BooleanField(default=True)
     is_sms = models.BooleanField(default=True)
@@ -21,14 +22,14 @@ class NotificationType(models.Model):
         ("r", "rarely")
     ]
 
-    preference = models.ForeignKey(
-        NotificationPreference, on_delete=models.CASCADE)
-    type = models.CharField(max_length=255)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="noti_types")
+    type = models.CharField(max_length=255, unique=True)
     frequency = models.CharField(
         max_length=5, choices=FREQUENCY_CHOICES, default="p")
+    is_email = models.BooleanField(default=True)
+    is_mobile = models.BooleanField(default=True)
+    is_sms = models.BooleanField(default=True)
 
     def __str__(self) -> str:
-        return self.preference_type
-
-    class Meta:
-        unique_together = ("preference", "type")
+        return self.type

@@ -10,4 +10,5 @@ class NotificationPreferenceAdmin(admin.ModelAdmin):
 
 @admin.register(NotificationType)
 class NotificationTypeAdmin(admin.ModelAdmin):
-    list_display = ('preference', 'type', 'frequency')
+    list_display = ('user', 'type', 'frequency', 'is_email',
+                    'is_mobile', 'is_sms')
