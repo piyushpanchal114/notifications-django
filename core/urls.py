@@ -5,6 +5,6 @@ from . import views
 urlpatterns = [
     path("notifications/",
          views.NotificationPreferenceRetrieveUpdateAPIView.as_view()),
-    path("preferences/",
+    path("notifications/<int:pk>/preferences/",
          views.NotificationTypeRetrieveUpdateAPIView.as_view())
 ]
