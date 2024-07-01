@@ -10,13 +10,14 @@ class NotificationPreferenceRetrieveUpdateAPIView(RetrieveUpdateAPIView):
 
     def get_object(self):
         return NotificationPreference.objects.filter(
-            user=self.request.user).first()
+            user=self.request.user).last()
 
 
 class NotificationTypeRetrieveUpdateAPIView(RetrieveUpdateAPIView):
     """View for retrieving the notification preference"""
     serializer_class = NotificationTypeSerializer
+    lookup_field = "pk"
 
-    def get_object(self):
+    def get_queryset(self):
         return NotificationType.objects.filter(
-            user=self.request.user).first()
+            user=self.request.user)
