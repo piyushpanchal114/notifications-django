@@ -30,7 +30,7 @@ class NotificationTypeSerializer(serializers.ModelSerializer):
     """Serializer for Notification Type"""
     class Meta:
         model = NotificationType
-        fields = ('type', 'frequency', 'is_email',
+        fields = ('id', 'type', 'frequency', 'is_email',
                   'is_mobile', 'is_sms')
 
     def update(self, instance, validated_data):
