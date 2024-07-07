@@ -11,4 +11,4 @@
  - Credentials (username - admin, pass - admin)
 ## How to test API
 - Open http://localhost:8000/api/notifications/ to toggle notifications
-- Open http://localhost:8000/api/notifications/{id}/preferences/ to add and see preferences
+- Open http://localhost:8000/api/preferences/ to add and see preferences
